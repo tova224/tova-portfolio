@@ -1,955 +1,1173 @@
 <!DOCTYPE html>
-<html lang="en" class="dark scroll-smooth">
+<html lang="en" class="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tova Oshinsky | Full-Stack, Backend & AI Software Developer</title>
-    
-    <!-- Google Fonts: Inter & JetBrains Mono -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome for crisp developer & UI icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
-                    },
-                    colors: {
-                        obsidian: '#06080f',
-                        cardDark: '#0d111d',
-                        borderDark: '#1e263b',
-                        accentIndigo: '#6366f1',
-                        accentCyan: '#06b6d4',
-                        accentEmerald: '#10b981',
-                    },
-                    animation: {
-                        'pulse-slow': 'pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'float': 'float 5s ease-in-out infinite',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0px)' },
-                            '50%': { transform: 'translateY(-8px)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        /* Custom subtle grid background & glassmorphic utilities */
-        .bg-grid-pattern {
-            background-size: 40px 40px;
-            background-image: 
-                linear-gradient(to right, rgba(99, 102, 241, 0.06) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(99, 102, 241, 0.06) 1px, transparent 1px);
-        }
-        .dark .bg-grid-pattern {
-            background-image: 
-                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-        }
-        .glass-card {
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-        }
-        .gradient-text {
-            background: linear-gradient(135deg, #818cf8 0%, #22d3ee 50%, #34d399 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .light .gradient-text {
-            background: linear-gradient(135deg, #4f46e5 0%, #0891b2 55%, #059669 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: rgba(99, 102, 241, 0.35);
-            border-radius: 9999px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: rgba(99, 102, 241, 0.6);
-        }
-        /* Reveal animation classes */
-        .reveal {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tova Oshinsky | Full-Stack, Backend & AI Software Developer</title>
+  <style>
+    :root {
+      --bg-primary: #090d16;
+      --bg-secondary: #111827;
+      --bg-card: rgba(17, 24, 39, 0.78);
+      --bg-card-hover: rgba(30, 41, 59, 0.92);
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --accent: #38bdf8;
+      --accent-secondary: #818cf8;
+      --accent-glow: rgba(56, 189, 248, 0.22);
+      --border: rgba(148, 163, 184, 0.16);
+      --border-strong: rgba(56, 189, 248, 0.45);
+      --badge-bg: rgba(56, 189, 248, 0.12);
+      --badge-text: #7dd3fc;
+      --code-bg: #0b1120;
+      --shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.65);
+    }
+
+    html.light {
+      --bg-primary: #f8fafc;
+      --bg-secondary: #ffffff;
+      --bg-card: rgba(255, 255, 255, 0.9);
+      --bg-card-hover: #ffffff;
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+      --accent: #0284c7;
+      --accent-secondary: #4f46e5;
+      --accent-glow: rgba(2, 132, 199, 0.14);
+      --border: rgba(15, 23, 42, 0.12);
+      --border-strong: rgba(2, 132, 199, 0.45);
+      --badge-bg: rgba(2, 132, 199, 0.1);
+      --badge-text: #0369a1;
+      --code-bg: #0f172a;
+      --shadow: 0 18px 38px -15px rgba(15, 23, 42, 0.14);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.65;
+      min-height: 100vh;
+      overflow-x: hidden;
+      transition: background-color 0.25s ease, color 0.25s ease;
+      background-image:
+        radial-gradient(circle at 15% 10%, var(--accent-glow), transparent 36%),
+        radial-gradient(circle at 85% 18%, rgba(129, 140, 248, 0.14), transparent 38%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      background: rgba(9, 13, 22, 0.82);
+      border-bottom: 1px solid var(--border);
+    }
+
+    html.light header {
+      background: rgba(248, 250, 252, 0.86);
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: -0.01em;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+      color: #ffffff;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 0.95rem;
+      box-shadow: 0 6px 18px var(--accent-glow);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .icon-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px 12px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      color: var(--text-primary);
+      font-size: 0.86rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .icon-btn:hover {
+      border-color: var(--border-strong);
+      transform: translateY(-1px);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+    }
+
+    .hero {
+      padding: 72px 0 56px;
+      display: grid;
+      grid-template-columns: 1.25fr 0.95fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      font-size: 0.82rem;
+      font-weight: 600;
+      border: 1px solid var(--border-strong);
+      margin-bottom: 18px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 10px #22c55e;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 4.5vw, 3.35rem);
+      line-height: 1.12;
+      letter-spacing: -0.025em;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .hero-role {
+      font-size: clamp(1.1rem, 2vw, 1.35rem);
+      font-weight: 600;
+      background: linear-gradient(90deg, var(--accent), var(--accent-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 18px;
+    }
+
+    .hero-desc {
+      color: var(--text-secondary);
+      font-size: 1.02rem;
+      margin-bottom: 26px;
+      max-width: 600px;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 20px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.94rem;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 10px 24px var(--accent-glow);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 18px;
+      border-radius: 12px;
+      background: var(--bg-card);
+      color: var(--text-primary);
+      font-weight: 600;
+      font-size: 0.94rem;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--border-strong);
+      transform: translateY(-1px);
+    }
+
+    .meta-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .profile-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .profile-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .dots span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--border);
+    }
+
+    pre.code-block {
+      background: var(--code-bg);
+      color: #e2e8f0;
+      padding: 18px;
+      border-radius: 14px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.82rem;
+      line-height: 1.55;
+      overflow-x: auto;
+      border: 1px solid rgba(148, 163, 184, 0.14);
+    }
+
+    .code-key { color: #7dd3fc; }
+    .code-str { color: #a5f3fc; }
+    .code-fn { color: #c4b5fd; }
+
+    section {
+      padding: 56px 0;
+    }
+
+    .section-header {
+      margin-bottom: 28px;
+    }
+
+    .section-tag {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.82rem;
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .section-title {
+      font-size: clamp(1.55rem, 3vw, 2.1rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .filter-btn {
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      color: var(--text-secondary);
+      font-size: 0.86rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+      color: #ffffff;
+      border-color: transparent;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 24px;
+      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-strong);
+      box-shadow: var(--shadow);
+      background: var(--bg-card-hover);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .card-title {
+      font-size: 1.12rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .card-subtitle {
+      font-size: 0.88rem;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .card-desc {
+      color: var(--text-secondary);
+      font-size: 0.93rem;
+      margin: 12px 0 16px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-bottom: 16px;
+    }
+
+    .tag {
+      padding: 4px 10px;
+      border-radius: 8px;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      font-size: 0.76rem;
+      font-weight: 600;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+
+    .card-link-btn {
+      align-self: flex-start;
+      background: none;
+      border: none;
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 0.88rem;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .card-link-btn:hover {
+      text-decoration: underline;
+    }
+
+    .timeline-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px 24px;
+      margin-bottom: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .timeline-period {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.82rem;
+      color: var(--badge-text);
+      background: var(--badge-bg);
+      padding: 5px 11px;
+      border-radius: 8px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .contact-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-strong);
+      border-radius: 22px;
+      padding: 36px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-box p {
+      color: var(--text-secondary);
+      max-width: 580px;
+      margin: 10px auto 24px;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.86rem;
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(2, 6, 23, 0.72);
+      backdrop-filter: blur(6px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 100;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal {
+      max-width: 620px;
+      width: 100%;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-strong);
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      max-height: 88vh;
+      overflow-y: auto;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .modal-close {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text-primary);
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .modal-list {
+      margin: 14px 0 20px 20px;
+      color: var(--text-secondary);
+    }
+
+    .modal-list li {
+      margin-bottom: 8px;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #0f172a;
+      color: #f8fafc;
+      border: 1px solid var(--accent);
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      box-shadow: var(--shadow);
+      opacity: 0;
+      transform: translateY(10px);
+      pointer-events: none;
+      transition: all 0.25s ease;
+      z-index: 120;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 44px;
+      }
+      .grid-2, .grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--bg-secondary);
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        padding: 18px 24px;
+        gap: 14px;
+      }
+      .nav-links.open {
+        display: flex;
+      }
+      .mobile-menu-btn {
+        display: inline-flex;
+      }
+      .btn-label {
+        display: none;
+      }
+    }
+  </style>
 </head>
-<body class="bg-slate-50 text-slate-900 dark:bg-obsidian dark:text-slate-100 font-sans antialiased selection:bg-indigo-500/30 selection:text-indigo-200 transition-colors duration-300 overflow-x-hidden">
+<body>
+  <header>
+    <div class="nav-inner">
+      <a href="#" class="brand">
+        <span class="brand-mark">TO</span>
+        <span>Tova Oshinsky</span>
+      </a>
 
-    <!-- Ambient Background Glows -->
-    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        <div class="absolute -top-40 -left-40 w-96 h-96 bg-indigo-500/15 dark:bg-indigo-600/15 rounded-full blur-[120px] animate-pulse-slow"></div>
-        <div class="absolute top-1/3 -right-32 w-[28rem] h-[28rem] bg-cyan-500/15 dark:bg-cyan-500/10 rounded-full blur-[130px] animate-pulse-slow" style="animation-delay: 2s;"></div>
-        <div class="absolute bottom-0 left-1/3 w-96 h-96 bg-emerald-500/10 dark:bg-emerald-500/10 rounded-full blur-[120px]"></div>
-        <div class="absolute inset-0 bg-grid-pattern"></div>
+      <nav class="nav-links" id="navLinks">
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Tech Stack</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a class="icon-btn" href="https://github.com/tova224" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <span>GitHub</span>
+        </a>
+        <a class="icon-btn" href="https://www.linkedin.com/in/tova-oshinsky-229b8a35b/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <span>LinkedIn</span>
+        </a>
+        <button class="icon-btn" id="themeToggle" type="button" aria-label="Toggle Theme" title="Toggle Light/Dark Theme">
+          <span id="themeIcon">☀</span>
+          <span class="btn-label" id="themeText">Light</span>
+        </button>
+        <button class="icon-btn mobile-menu-btn" id="menuToggle" type="button" aria-label="Menu">☰</button>
+      </div>
     </div>
+  </header>
 
-    <!-- Navigation Bar -->
-    <header class="sticky top-0 z-40 w-full border-b border-slate-200/80 dark:border-slate-800/80 bg-white/75 dark:bg-obsidian/75 glass-card transition-colors">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <!-- Brand Monogram -->
-            <a href="#" class="flex items-center gap-2.5 group">
-                <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 via-cyan-500 to-emerald-500 p-[1.5px] shadow-md shadow-indigo-500/20 group-hover:scale-105 transition-transform">
-                    <div class="w-full h-full bg-white dark:bg-obsidian rounded-[10.5px] flex items-center justify-center font-mono font-bold text-sm tracking-tighter text-slate-900 dark:text-white">
-                        TO<span class="text-cyan-500">.</span>
-                    </div>
-                </div>
-                <span class="font-semibold tracking-tight text-slate-900 dark:text-white hidden sm:inline">Tova Oshinsky</span>
-            </a>
+  <main class="container">
+    <section class="hero">
+      <div>
+        <div class="status-pill">
+          <span class="status-dot"></span>
+          <span>Open to Full-Stack, Backend & AI Software Roles</span>
+        </div>
+        <h1>Tova Oshinsky</h1>
+        <div class="hero-role">Software Developer | Full-Stack, Backend & AI</div>
+        <p class="hero-desc">
+          Building scalable web applications, layered backend architectures, and LLM-powered solutions.
+          Experienced across Python, C#, Java, TypeScript, React, Angular, Node.js, .NET Core, and SQL Server.
+        </p>
 
-            <!-- Desktop Navigation Links -->
-            <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-600 dark:text-slate-300">
-                <a href="#about" class="hover:text-indigo-600 dark:hover:text-cyan-400 transition-colors">About</a>
-                <a href="#projects" class="hover:text-indigo-600 dark:hover:text-cyan-400 transition-colors">Projects</a>
-                <a href="#skills" class="hover:text-indigo-600 dark:hover:text-cyan-400 transition-colors">Tech Stack</a>
-                <a href="#education" class="hover:text-indigo-600 dark:hover:text-cyan-400 transition-colors">Education</a>
-                <a href="#contact" class="hover:text-indigo-600 dark:hover:text-cyan-400 transition-colors">Contact</a>
-            </nav>
-
-            <!-- Action Controls -->
-            <div class="flex items-center gap-2.5">
-                <a href="https://github.com/tova224" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile"
-                   class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:border-indigo-500/50 hover:text-indigo-600 dark:hover:text-white transition-all">
-                    <i class="fa-brands fa-github text-base"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/tova-oshinsky-229b8a35b/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"
-                   class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:border-cyan-500/50 hover:text-cyan-600 dark:hover:text-cyan-400 transition-all">
-                    <i class="fa-brands fa-linkedin-in text-base"></i>
-                </a>
-                <!-- Theme Toggle Button -->
-                <button id="themeToggle" type="button" aria-label="Toggle Light/Dark Theme"
-                        class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-100/70 dark:bg-slate-900/70 text-slate-700 dark:text-amber-300 hover:border-indigo-500/50 transition-all">
-                    <i id="themeIcon" class="fa-solid fa-sun text-base"></i>
-                </button>
-                <!-- Mobile Menu Toggle -->
-                <button id="mobileMenuBtn" type="button" aria-label="Open Navigation Menu"
-                        class="md:hidden p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200">
-                    <i class="fa-solid fa-bars"></i>
-                </button>
-            </div>
+        <div class="cta-row">
+          <a href="#projects" class="btn-primary">Explore Projects ↓</a>
+          <button type="button" class="btn-secondary" id="copyEmailBtn">
+            <span>Copy Email</span>
+            <span style="opacity:0.75;font-size:0.84rem;">tandt5224@gmail.com</span>
+          </button>
         </div>
 
-        <!-- Mobile Dropdown Nav -->
-        <div id="mobileMenu" class="hidden md:hidden border-t border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-obsidian/95 px-4 py-4 space-y-2">
-            <a href="#about" class="mobile-link block px-3 py-2.5 rounded-xl text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800/70">About</a>
-            <a href="#projects" class="mobile-link block px-3 py-2.5 rounded-xl text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800/70">Projects</a>
-            <a href="#skills" class="mobile-link block px-3 py-2.5 rounded-xl text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800/70">Tech Stack</a>
-            <a href="#education" class="mobile-link block px-3 py-2.5 rounded-xl text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800/70">Education</a>
-            <a href="#contact" class="mobile-link block px-3 py-2.5 rounded-xl text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800/70">Contact</a>
+        <div class="meta-line">
+          <span>📍 Israel</span>
+          <span>🌐 English (Fluent) • Hebrew (Native)</span>
+          <span>⚙️ Clean Architecture & LLMs</span>
         </div>
-    </header>
+      </div>
 
-    <main class="relative z-10">
-        <!-- HERO SECTION -->
-        <section id="about" class="pt-16 pb-20 sm:pt-24 sm:pb-28 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                
-                <!-- Left Column: Intro & CTA -->
-                <div class="lg:col-span-7 space-y-6">
-                    <!-- Terminal Status Pill -->
-                    <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 font-mono text-xs sm:text-sm shadow-sm">
-                        <span class="relative flex h-2.5 w-2.5">
-                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
-                        </span>
-                        <span>Available for Full-Stack, Backend &amp; AI Roles</span>
-                    </div>
-
-                    <div class="space-y-3">
-                        <p class="font-mono text-sm sm:text-base text-indigo-600 dark:text-cyan-400 font-medium">
-                            &lt;HelloWorld /&gt; I’m
-                        </p>
-                        <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.1]">
-                            Tova Oshinsky
-                        </h1>
-                        <h2 class="text-xl sm:text-2xl font-bold gradient-text">
-                            Software Developer | Full-Stack, Backend &amp; AI
-                        </h2>
-                    </div>
-
-                    <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
-                        Building scalable web applications, robust backend architectures, and intelligent LLM-powered solutions. Experienced in designing layered 3-tier systems, secure RESTful APIs, and data-driven AI workflows across <span class="font-semibold text-slate-800 dark:text-white">.NET Core, Node.js, Java Spring Boot, React,</span> and <span class="font-semibold text-slate-800 dark:text-white">Python</span>.
-                    </p>
-
-                    <!-- Primary Action Buttons -->
-                    <div class="flex flex-wrap items-center gap-3.5 pt-2">
-                        <a href="#projects"
-                           class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-cyan-500 hover:from-indigo-500 hover:to-cyan-400 text-white font-semibold text-sm shadow-lg shadow-indigo-500/25 transition-all hover:-translate-y-0.5">
-                            <span>Explore Featured Work</span>
-                            <i class="fa-solid fa-arrow-down text-xs"></i>
-                        </a>
-
-                        <button id="copyEmailHeroBtn" type="button"
-                                class="inline-flex items-center gap-2.5 px-5 py-3.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white/80 dark:bg-cardDark/80 hover:border-indigo-500 dark:hover:border-cyan-400 text-slate-800 dark:text-slate-200 font-mono text-xs sm:text-sm transition-all hover:-translate-y-0.5">
-                            <i class="fa-regular fa-copy text-indigo-500 dark:text-cyan-400"></i>
-                            <span>tandt5224@gmail.com</span>
-                        </button>
-                    </div>
-
-                    <!-- Quick Metadata Strip -->
-                    <div class="flex flex-wrap items-center gap-x-6 gap-y-2 pt-3 text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-mono">
-                        <span class="flex items-center gap-1.5">
-                            <i class="fa-solid fa-location-dot text-indigo-500"></i> Israel
-                        </span>
-                        <span class="flex items-center gap-1.5">
-                            <i class="fa-solid fa-language text-cyan-500"></i> English (Fluent) &bull; Hebrew (Native)
-                        </span>
-                        <span class="flex items-center gap-1.5">
-                            <i class="fa-solid fa-layer-group text-emerald-500"></i> Clean Architecture &amp; AI
-                        </span>
-                    </div>
-                </div>
-
-                <!-- Right Column: Interactive Developer Code Card -->
-                <div class="lg:col-span-5 animate-float">
-                    <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-cardDark/90 glass-card shadow-2xl shadow-indigo-500/10 overflow-hidden">
-                        <!-- Window Header -->
-                        <div class="px-4 py-3 border-b border-slate-200 dark:border-slate-800 bg-slate-100/80 dark:bg-slate-900/90 flex items-center justify-between">
-                            <div class="flex items-center gap-2">
-                                <span class="w-3 h-3 rounded-full bg-rose-500/90"></span>
-                                <span class="w-3 h-3 rounded-full bg-amber-400/90"></span>
-                                <span class="w-3 h-3 rounded-full bg-emerald-500/90"></span>
-                            </div>
-                            <span class="font-mono text-xs text-slate-500 dark:text-slate-400">tova.profile.ts</span>
-                            <span class="font-mono text-[10px] px-2 py-0.5 rounded bg-indigo-500/15 text-indigo-600 dark:text-indigo-300">TS</span>
-                        </div>
-                        
-                        <!-- Code Content -->
-                        <div class="p-5 sm:p-6 font-mono text-xs sm:text-[13px] leading-relaxed overflow-x-auto text-slate-800 dark:text-slate-200">
-<pre><code><span class="text-indigo-500 dark:text-indigo-400">const</span> <span class="text-cyan-600 dark:text-cyan-300">developer</span> = {
-  <span class="text-slate-500 dark:text-slate-400">name:</span> <span class="text-emerald-600 dark:text-emerald-400">"Tova Oshinsky"</span>,
-  <span class="text-slate-500 dark:text-slate-400">focus:</span> [
-    <span class="text-emerald-600 dark:text-emerald-400">"Full-Stack Engineering"</span>,
-    <span class="text-emerald-600 dark:text-emerald-400">"Backend Architecture"</span>,
-    <span class="text-emerald-600 dark:text-emerald-400">"AI &amp; LLM Applications"</span>
+      <div class="profile-card">
+        <div class="profile-card-top">
+          <div class="dots">
+            <span></span><span></span><span></span>
+          </div>
+          <span>tova.profile.ts</span>
+        </div>
+        <pre class="code-block"><span class="code-key">const</span> developer = {
+  <span class="code-key">name</span>: <span class="code-str">"Tova Oshinsky"</span>,
+  <span class="code-key">focus</span>: [
+    <span class="code-str">"Full-Stack Engineering"</span>,
+    <span class="code-str">"Backend & APIs"</span>,
+    <span class="code-str">"AI & LLM Applications"</span>
   ],
-  <span class="text-slate-500 dark:text-slate-400">coreStack:</span> {
-    <span class="text-slate-500 dark:text-slate-400">backend:</span> [<span class="text-amber-600 dark:text-amber-300">".NET Core"</span>, <span class="text-amber-600 dark:text-amber-300">"Node.js"</span>, <span class="text-amber-600 dark:text-amber-300">"Spring Boot"</span>, <span class="text-amber-600 dark:text-amber-300">"Python"</span>],
-    <span class="text-slate-500 dark:text-slate-400">frontend:</span> [<span class="text-amber-600 dark:text-amber-300">"React"</span>, <span class="text-amber-600 dark:text-amber-300">"TypeScript"</span>, <span class="text-amber-600 dark:text-amber-300">"Angular"</span>],
-    <span class="text-slate-500 dark:text-slate-400">databases:</span> [<span class="text-amber-600 dark:text-amber-300">"SQL Server"</span>, <span class="text-amber-600 dark:text-amber-300">"PostgreSQL"</span>, <span class="text-amber-600 dark:text-amber-300">"MongoDB"</span>]
+  <span class="code-key">stack</span>: {
+    <span class="code-key">backend</span>: [<span class="code-str">".NET Core"</span>, <span class="code-str">"Node.js"</span>, <span class="code-str">"Spring Boot"</span>, <span class="code-str">"Python"</span>],
+    <span class="code-key">frontend</span>: [<span class="code-str">"React"</span>, <span class="code-str">"TypeScript"</span>, <span class="code-str">"Angular"</span>],
+    <span class="code-key">databases</span>: [<span class="code-str">"SQL Server"</span>, <span class="code-str">"PostgreSQL"</span>, <span class="code-str">"MongoDB"</span>]
   },
-  <span class="text-slate-500 dark:text-slate-400">principles:</span> [<span class="text-cyan-600 dark:text-cyan-300">"OOP/OOD"</span>, <span class="text-cyan-600 dark:text-cyan-300">"Layered 3-Tier"</span>, <span class="text-cyan-600 dark:text-cyan-300">"Clean APIs"</span>],
-  <span class="text-indigo-500 dark:text-indigo-400">status:</span> () =&gt; <span class="text-emerald-600 dark:text-emerald-400">"Ready to build scalable impact 🚀"</span>
-};</code></pre>
-                        </div>
-                    </div>
-                </div>
+  <span class="code-key">ready</span>: <span class="code-fn">() =></span> <span class="code-str">"Building scalable software"</span>
+};</pre>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="section-header">
+        <span class="section-tag">01 // EXPERIENCE</span>
+        <h2 class="section-title">Professional Experience</h2>
+      </div>
+
+      <div class="card">
+        <div>
+          <div class="card-top">
+            <div>
+              <div class="card-title">Full Stack Developer</div>
+              <div class="card-subtitle">Ministry of Innovation, Science and Technology</div>
             </div>
-        </section>
-
-        <!-- FEATURED PROJECTS & EXPERIENCE SECTION -->
-        <section id="projects" class="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto border-t border-slate-200/70 dark:border-slate-800/70 reveal">
-            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
-                <div>
-                    <span class="font-mono text-xs uppercase tracking-widest text-indigo-600 dark:text-cyan-400 font-semibold">
-                        01 // Experience &amp; Engineering
-                    </span>
-                    <h2 class="text-3xl sm:text-4xl font-bold tracking-tight mt-2 text-slate-900 dark:text-white">
-                        Featured Systems &amp; Projects
-                    </h2>
-                    <p class="text-slate-600 dark:text-slate-400 mt-2 max-w-xl text-sm sm:text-base">
-                        Production-minded systems engineered with clean layered architectures, relational data modeling, and modern AI pipelines. Click any project for architectural details.
-                    </p>
-                </div>
-
-                <!-- Interactive Filter Tabs -->
-                <div id="projectFilters" class="inline-flex flex-wrap gap-1.5 p-1.5 rounded-2xl bg-slate-200/70 dark:bg-slate-900/90 border border-slate-300/70 dark:border-slate-800 self-start">
-                    <button data-filter="all" class="filter-btn active px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white dark:bg-indigo-600 text-slate-900 dark:text-white shadow-sm">
-                        All (6)
-                    </button>
-                    <button data-filter="fullstack" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all">
-                        Full-Stack
-                    </button>
-                    <button data-filter="backend" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all">
-                        Backend &amp; DB
-                    </button>
-                    <button data-filter="ai" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all">
-                        AI / LLM
-                    </button>
-                </div>
-            </div>
-
-            <!-- Projects Grid (Populated via JS for rich modal interactivity) -->
-            <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Cards injected dynamically -->
-            </div>
-        </section>
-
-        <!-- TECHNICAL SKILLS MATRIX -->
-        <section id="skills" class="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto border-t border-slate-200/70 dark:border-slate-800/70 reveal">
-            <div class="mb-12">
-                <span class="font-mono text-xs uppercase tracking-widest text-indigo-600 dark:text-cyan-400 font-semibold">
-                    02 // Technical Arsenal
-                </span>
-                <h2 class="text-3xl sm:text-4xl font-bold tracking-tight mt-2 text-slate-900 dark:text-white">
-                    Skills &amp; Technologies
-                </h2>
-                <p class="text-slate-600 dark:text-slate-400 mt-2 max-w-xl text-sm sm:text-base">
-                    A versatile stack spanning backend systems, responsive frontends, relational &amp; NoSQL databases, and AI/ML tooling.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Languages -->
-                <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-cardDark/80 glass-card hover:border-indigo-500/40 transition-all">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-xl bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
-                            <i class="fa-solid fa-code"></i>
-                        </div>
-                        <h3 class="font-bold text-lg text-slate-900 dark:text-white">Languages</h3>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-pill">Python</span>
-                        <span class="skill-pill">C#</span>
-                        <span class="skill-pill">Java</span>
-                        <span class="skill-pill">C++</span>
-                        <span class="skill-pill">JavaScript</span>
-                        <span class="skill-pill">TypeScript</span>
-                    </div>
-                </div>
-
-                <!-- Backend & APIs -->
-                <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-cardDark/80 glass-card hover:border-cyan-500/40 transition-all">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-xl bg-cyan-500/15 text-cyan-600 dark:text-cyan-400 flex items-center justify-center">
-                            <i class="fa-solid fa-server"></i>
-                        </div>
-                        <h3 class="font-bold text-lg text-slate-900 dark:text-white">Backend &amp; APIs</h3>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-pill">Node.js</span>
-                        <span class="skill-pill">Express.js</span>
-                        <span class="skill-pill">.NET / .NET Core</span>
-                        <span class="skill-pill">Java Spring Boot</span>
-                        <span class="skill-pill">JPA</span>
-                        <span class="skill-pill">RESTful APIs</span>
-                    </div>
-                </div>
-
-                <!-- Frontend -->
-                <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-cardDark/80 glass-card hover:border-emerald-500/40 transition-all">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-xl bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
-                            <i class="fa-solid fa-display"></i>
-                        </div>
-                        <h3 class="font-bold text-lg text-slate-900 dark:text-white">Frontend</h3>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-pill">React</span>
-                        <span class="skill-pill">Angular</span>
-                        <span class="skill-pill">HTML5</span>
-                        <span class="skill-pill">CSS3</span>
-                        <span class="skill-pill">Responsive UI</span>
-                    </div>
-                </div>
-
-                <!-- Databases -->
-                <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-cardDark/80 glass-card hover:border-amber-500/40 transition-all">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-xl bg-amber-500/15 text-amber-600 dark:text-amber-400 flex items-center justify-center">
-                            <i class="fa-solid fa-database"></i>
-                        </div>
-                        <h3 class="font-bold text-lg text-slate-900 dark:text-white">Databases</h3>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-pill">SQL Server</span>
-                        <span class="skill-pill">Stored Procedures</span>
-                        <span class="skill-pill">Entity Framework</span>
-                        <span class="skill-pill">PostgreSQL</span>
-                        <span class="skill-pill">MongoDB</span>
-                        <span class="skill-pill">H2 Database</span>
-                    </div>
-                </div>
-
-                <!-- AI & Data Science -->
-                <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-cardDark/80 glass-card hover:border-purple-500/40 transition-all">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-xl bg-purple-500/15 text-purple-600 dark:text-purple-400 flex items-center justify-center">
-                            <i class="fa-solid fa-brain"></i>
-                        </div>
-                        <h3 class="font-bold text-lg text-slate-900 dark:text-white">AI &amp; Data</h3>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-pill">LLM Applications</span>
-                        <span class="skill-pill">OpenAI API</span>
-                        <span class="skill-pill">Prompt Engineering</span>
-                        <span class="skill-pill">Pandas</span>
-                        <span class="skill-pill">KNN</span>
-                        <span class="skill-pill">Regression</span>
-                    </div>
-                </div>
-
-                <!-- CS Foundations & DevOps -->
-                <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-cardDark/80 glass-card hover:border-rose-500/40 transition-all">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-xl bg-rose-500/15 text-rose-600 dark:text-rose-400 flex items-center justify-center">
-                            <i class="fa-solid fa-gears"></i>
-                        </div>
-                        <h3 class="font-bold text-lg text-slate-900 dark:text-white">Architecture &amp; Tools</h3>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-pill">Layered 3-Tier</span>
-                        <span class="skill-pill">OOP / OOD</span>
-                        <span class="skill-pill">Data Structures &amp; Algorithms</span>
-                        <span class="skill-pill">Operating Systems</span>
-                        <span class="skill-pill">Git</span>
-                        <span class="skill-pill">Linux</span>
-                        <span class="skill-pill">Postman</span>
-                        <span class="skill-pill">Cursor</span>
-                        <span class="skill-pill">Claude Code</span>
-                        <span class="skill-pill">GitHub Copilot</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- EDUCATION & TRAINING TIMELINE -->
-        <section id="education" class="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto border-t border-slate-200/70 dark:border-slate-800/70 reveal">
-            <div class="mb-12">
-                <span class="font-mono text-xs uppercase tracking-widest text-indigo-600 dark:text-cyan-400 font-semibold">
-                    03 // Academic &amp; Practical Track
-                </span>
-                <h2 class="text-3xl sm:text-4xl font-bold tracking-tight mt-2 text-slate-900 dark:text-white">
-                    Education &amp; Training
-                </h2>
-            </div>
-
-            <div class="relative border-l-2 border-indigo-500/30 dark:border-slate-800 ml-3 sm:ml-6 space-y-8">
-                <!-- Item 1 -->
-                <div class="relative pl-8 sm:pl-10">
-                    <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-emerald-500 ring-4 ring-white dark:ring-obsidian"></span>
-                    <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-cardDark/80 glass-card">
-                        <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
-                            <h3 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">AI Practicum</h3>
-                            <span class="font-mono text-xs px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 font-semibold">
-                                2026 – Present
-                            </span>
-                        </div>
-                        <p class="text-indigo-600 dark:text-cyan-400 font-medium text-sm">Ministry of Innovation, Science and Technology</p>
-                        <p class="text-slate-600 dark:text-slate-400 text-sm mt-2">
-                            Hands-on engineering practicum developing full-stack recruitment platforms and integrating applied AI workflows in a collaborative Git environment.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Item 2 -->
-                <div class="relative pl-8 sm:pl-10">
-                    <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-indigo-500 ring-4 ring-white dark:ring-obsidian"></span>
-                    <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-cardDark/80 glass-card">
-                        <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
-                            <h3 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">Practical Software Engineering Diploma</h3>
-                            <span class="font-mono text-xs px-3 py-1 rounded-full bg-indigo-500/15 text-indigo-700 dark:text-indigo-300 font-semibold">
-                                2024 – 2026
-                            </span>
-                        </div>
-                        <p class="text-indigo-600 dark:text-cyan-400 font-medium text-sm">MAHAT – Technological Training Institute</p>
-                        <p class="text-slate-600 dark:text-slate-400 text-sm mt-2">
-                            Comprehensive software engineering curriculum covering Object-Oriented Design, Data Structures &amp; Algorithms, Operating Systems, Databases, and Full-Stack Development.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Item 3 -->
-                <div class="relative pl-8 sm:pl-10">
-                    <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-cyan-500 ring-4 ring-white dark:ring-obsidian"></span>
-                    <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-cardDark/80 glass-card">
-                        <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
-                            <h3 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">Software Engineering &amp; Artificial Intelligence Training</h3>
-                            <span class="font-mono text-xs px-3 py-1 rounded-full bg-cyan-500/15 text-cyan-700 dark:text-cyan-300 font-semibold">
-                                2025 – 2026
-                            </span>
-                        </div>
-                        <p class="text-indigo-600 dark:text-cyan-400 font-medium text-sm">KamaTech</p>
-                        <p class="text-slate-600 dark:text-slate-400 text-sm mt-2">
-                            Industry-aligned intensive training in modern software architecture, Python for AI/ML, LLM application engineering, and production coding standards.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Item 4 -->
-                <div class="relative pl-8 sm:pl-10">
-                    <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-slate-400 dark:bg-slate-600 ring-4 ring-white dark:ring-obsidian"></span>
-                    <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-cardDark/80 glass-card">
-                        <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
-                            <h3 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">High School Diploma – Computer Science &amp; Programming Track</h3>
-                            <span class="font-mono text-xs px-3 py-1 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-semibold">
-                                2022 – 2024
-                            </span>
-                        </div>
-                        <p class="text-slate-600 dark:text-slate-400 text-sm mt-2">
-                            Major in Computer Science, algorithmic thinking, and foundational software programming.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CONTACT & CTA SECTION -->
-        <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto border-t border-slate-200/70 dark:border-slate-800/70 reveal">
-            <div class="rounded-3xl border border-slate-200 dark:border-slate-800 bg-gradient-to-br from-white via-slate-50 to-indigo-50/50 dark:from-cardDark dark:via-cardDark dark:to-indigo-950/30 p-8 sm:p-12 glass-card shadow-xl relative overflow-hidden">
-                <div class="max-w-2xl space-y-5 relative z-10">
-                    <span class="font-mono text-xs uppercase tracking-widest text-indigo-600 dark:text-cyan-400 font-semibold">
-                        04 // Let’s Connect
-                    </span>
-                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-                        Looking for a dedicated Full-Stack, Backend, or AI Engineer?
-                    </h2>
-                    <p class="text-slate-600 dark:text-slate-300 text-base sm:text-lg leading-relaxed">
-                        I’m excited to contribute to engineering teams building high-impact products. Feel free to reach out directly via email, phone, or LinkedIn.
-                    </p>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-3">
-                        <!-- Email Copy Card -->
-                        <button id="copyEmailFooterBtn" type="button"
-                                class="flex items-center justify-between p-4 rounded-2xl border border-slate-200 dark:border-slate-700/80 bg-white/90 dark:bg-slate-900/80 hover:border-indigo-500 dark:hover:border-cyan-400 transition-all text-left group">
-                            <div class="flex items-center gap-3.5">
-                                <div class="w-10 h-10 rounded-xl bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
-                                    <i class="fa-solid fa-envelope"></i>
-                                </div>
-                                <div>
-                                    <p class="text-xs text-slate-500 dark:text-slate-400 font-mono">Email (Click to copy)</p>
-                                    <p class="font-semibold text-sm text-slate-900 dark:text-white">tandt5224@gmail.com</p>
-                                </div>
-                            </div>
-                            <i class="fa-regular fa-copy text-slate-400 group-hover:text-indigo-500 dark:group-hover:text-cyan-400"></i>
-                        </button>
-
-                        <!-- Phone Link Card -->
-                        <a href="tel:0583285224"
-                           class="flex items-center justify-between p-4 rounded-2xl border border-slate-200 dark:border-slate-700/80 bg-white/90 dark:bg-slate-900/80 hover:border-emerald-500 transition-all group">
-                            <div class="flex items-center gap-3.5">
-                                <div class="w-10 h-10 rounded-xl bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
-                                    <i class="fa-solid fa-phone"></i>
-                                </div>
-                                <div>
-                                    <p class="text-xs text-slate-500 dark:text-slate-400 font-mono">Direct Phone</p>
-                                    <p class="font-semibold text-sm text-slate-900 dark:text-white">058-328-5224</p>
-                                </div>
-                            </div>
-                            <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-400 group-hover:text-emerald-500"></i>
-                        </a>
-
-                        <!-- LinkedIn Card -->
-                        <a href="https://www.linkedin.com/in/tova-oshinsky-229b8a35b/" target="_blank" rel="noopener noreferrer"
-                           class="flex items-center justify-between p-4 rounded-2xl border border-slate-200 dark:border-slate-700/80 bg-white/90 dark:bg-slate-900/80 hover:border-cyan-500 transition-all group">
-                            <div class="flex items-center gap-3.5">
-                                <div class="w-10 h-10 rounded-xl bg-cyan-500/15 text-cyan-600 dark:text-cyan-400 flex items-center justify-center">
-                                    <i class="fa-brands fa-linkedin-in"></i>
-                                </div>
-                                <div>
-                                    <p class="text-xs text-slate-500 dark:text-slate-400 font-mono">LinkedIn</p>
-                                    <p class="font-semibold text-sm text-slate-900 dark:text-white">/in/tova-oshinsky</p>
-                                </div>
-                            </div>
-                            <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-400 group-hover:text-cyan-500"></i>
-                        </a>
-
-                        <!-- GitHub Card -->
-                        <a href="https://github.com/tova224" target="_blank" rel="noopener noreferrer"
-                           class="flex items-center justify-between p-4 rounded-2xl border border-slate-200 dark:border-slate-700/80 bg-white/90 dark:bg-slate-900/80 hover:border-purple-500 transition-all group">
-                            <div class="flex items-center gap-3.5">
-                                <div class="w-10 h-10 rounded-xl bg-purple-500/15 text-purple-600 dark:text-purple-400 flex items-center justify-center">
-                                    <i class="fa-brands fa-github"></i>
-                                </div>
-                                <div>
-                                    <p class="text-xs text-slate-500 dark:text-slate-400 font-mono">GitHub</p>
-                                    <p class="font-semibold text-sm text-slate-900 dark:text-white">github.com/tova224</p>
-                                </div>
-                            </div>
-                            <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-400 group-hover:text-purple-500"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- FOOTER -->
-    <footer class="relative z-10 border-t border-slate-200 dark:border-slate-800/80 py-8 px-4 sm:px-6 lg:px-8 text-center text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-mono">
-        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p>&copy; <span id="currentYear"></span> Tova Oshinsky. Engineered with precision.</p>
-            <p class="text-xs">Full-Stack &bull; Backend &bull; AI Systems</p>
+            <span class="tag">Full-Stack • Backend • SQL</span>
+          </div>
+          <p class="card-desc">
+            Engineered an end-to-end recruitment management system using React, TypeScript, Node.js, Express, and .NET Core.
+            Implemented Layered Architecture, OOP/OOD principles, secure RESTful APIs, and SQL Server database workflows with
+            Stored Procedures, complex queries, and Entity Framework inside a collaborative Git workflow.
+          </p>
+          <div class="tags">
+            <span class="tag">React</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">Express</span>
+            <span class="tag">.NET Core</span>
+            <span class="tag">SQL Server</span>
+            <span class="tag">Entity Framework</span>
+            <span class="tag">Git</span>
+          </div>
         </div>
-    </footer>
+        <button type="button" class="card-link-btn" onclick="openProjectModal('recruitment')">View Architecture Details →</button>
+      </div>
+    </section>
 
-    <!-- PROJECT DETAIL MODAL -->
-    <div id="projectModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/75 backdrop-blur-sm">
-        <div class="relative w-full max-w-2xl rounded-3xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-cardDark p-6 sm:p-8 shadow-2xl transform transition-all">
-            <button id="closeModalBtn" type="button" aria-label="Close modal"
-                    class="absolute top-5 right-5 w-9 h-9 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
+    <section id="projects">
+      <div class="section-header">
+        <span class="section-tag">02 // PROJECTS</span>
+        <h2 class="section-title">Featured Software & AI Projects</h2>
+      </div>
 
-            <div id="modalBadge" class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-semibold bg-indigo-500/15 text-indigo-600 dark:text-cyan-300 mb-3"></div>
-            <h3 id="modalTitle" class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mb-2"></h3>
-            <p id="modalOrg" class="text-sm font-medium text-indigo-600 dark:text-indigo-400 mb-4"></p>
-            
-            <div class="space-y-4 text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-                <p id="modalDescription"></p>
-                <div>
-                    <h4 class="font-mono text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">Key Architectural Highlights</h4>
-                    <ul id="modalHighlights" class="space-y-2 text-sm"></ul>
-                </div>
-                <div>
-                    <h4 class="font-mono text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">Technologies Used</h4>
-                    <div id="modalTags" class="flex flex-wrap gap-2"></div>
-                </div>
+      <div class="filter-bar" id="filterBar">
+        <button type="button" class="filter-btn active" data-filter="all">All Projects</button>
+        <button type="button" class="filter-btn" data-filter="fullstack">Full-Stack</button>
+        <button type="button" class="filter-btn" data-filter="backend">Backend & OOP</button>
+        <button type="button" class="filter-btn" data-filter="ai">AI & LLM</button>
+      </div>
+
+      <div class="grid-2" id="projectsGrid">
+        <article class="card project-item" data-category="fullstack backend">
+          <div>
+            <div class="card-top">
+              <div>
+                <div class="card-title">Recruitment Management System</div>
+                <div class="card-subtitle">End-to-End Enterprise Platform</div>
+              </div>
+              <span class="tag">Full-Stack</span>
             </div>
-
-            <div class="mt-7 pt-5 border-t border-slate-200 dark:border-slate-800 flex flex-wrap items-center justify-between gap-3">
-                <a href="https://github.com/tova224" target="_blank" rel="noopener noreferrer"
-                   class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-semibold text-sm hover:opacity-90 transition-opacity">
-                    <i class="fa-brands fa-github"></i>
-                    <span>View GitHub Profile</span>
-                </a>
-                <button id="closeModalSecondaryBtn" type="button"
-                        class="px-5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
-                    Close
-                </button>
+            <p class="card-desc">
+              Built a complete recruitment management platform with layered architecture, RESTful APIs, and SQL Server
+              Stored Procedures & Entity Framework integration.
+            </p>
+            <div class="tags">
+              <span class="tag">React</span>
+              <span class="tag">TypeScript</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">.NET Core</span>
+              <span class="tag">SQL Server</span>
             </div>
+          </div>
+          <button type="button" class="card-link-btn" onclick="openProjectModal('recruitment')">Inspect System →</button>
+        </article>
+
+        <article class="card project-item" data-category="fullstack backend">
+          <div>
+            <div class="card-top">
+              <div>
+                <div class="card-title">ClinicFlow – Clinic Management System</div>
+                <div class="card-subtitle">Smart Scheduling & REST Architecture</div>
+              </div>
+              <span class="tag">Spring Boot</span>
+            </div>
+            <p class="card-desc">
+              Developed a full-stack clinic management system featuring smart appointment scheduling, conflict validation,
+              advanced search, and layered RESTful APIs.
+            </p>
+            <div class="tags">
+              <span class="tag">React</span>
+              <span class="tag">Java Spring Boot</span>
+              <span class="tag">JPA</span>
+              <span class="tag">H2 Database</span>
+            </div>
+          </div>
+          <button type="button" class="card-link-btn" onclick="openProjectModal('clinicflow')">Inspect System →</button>
+        </article>
+
+        <article class="card project-item" data-category="ai">
+          <div>
+            <div class="card-top">
+              <div>
+                <div class="card-title">AI Chatbot & Summarization App</div>
+                <div class="card-subtitle">Conversational LLM Assistant</div>
+              </div>
+              <span class="tag">AI / LLM</span>
+            </div>
+            <p class="card-desc">
+              Developed a conversational AI chatbot with conversation history management, structured data handling,
+              and automated summary generation.
+            </p>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">OpenAI API</span>
+              <span class="tag">LLMs</span>
+              <span class="tag">Pandas</span>
+            </div>
+          </div>
+          <button type="button" class="card-link-btn" onclick="openProjectModal('chatbot')">Inspect System →</button>
+        </article>
+
+        <article class="card project-item" data-category="fullstack backend">
+          <div>
+            <div class="card-top">
+              <div>
+                <div class="card-title">Three-Tier Full-Stack Web App</div>
+                <div class="card-subtitle">Angular + .NET + SQL Server</div>
+              </div>
+              <span class="tag">3-Tier</span>
+            </div>
+            <p class="card-desc">
+              Created a three-layer architecture web application with full CRUD operations, Stored Procedures,
+              and RESTful communication.
+            </p>
+            <div class="tags">
+              <span class="tag">Angular</span>
+              <span class="tag">.NET</span>
+              <span class="tag">SQL Server</span>
+              <span class="tag">REST APIs</span>
+            </div>
+          </div>
+          <button type="button" class="card-link-btn" onclick="openProjectModal('threetier')">Inspect System →</button>
+        </article>
+
+        <article class="card project-item" data-category="backend">
+          <div>
+            <div class="card-top">
+              <div>
+                <div class="card-title">Office Management System</div>
+                <div class="card-subtitle">Object-Oriented Architecture</div>
+              </div>
+              <span class="tag">C# / OOP</span>
+            </div>
+            <p class="card-desc">
+              Designed an office management system implementing object-oriented programming principles and relational
+              database integration.
+            </p>
+            <div class="tags">
+              <span class="tag">C#</span>
+              <span class="tag">SQL</span>
+              <span class="tag">OOP</span>
+            </div>
+          </div>
+          <button type="button" class="card-link-btn" onclick="openProjectModal('office')">Inspect System →</button>
+        </article>
+
+        <article class="card project-item" data-category="fullstack">
+          <div>
+            <div class="card-top">
+              <div>
+                <div class="card-title">Interactive Web Application</div>
+                <div class="card-subtitle">Responsive Client-Side Engineering</div>
+              </div>
+              <span class="tag">Frontend</span>
+            </div>
+            <p class="card-desc">
+              Developed a responsive website interface with clean layout structure and dynamic client-side functionality.
+            </p>
+            <div class="tags">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">JavaScript</span>
+            </div>
+          </div>
+          <button type="button" class="card-link-btn" onclick="openProjectModal('web')">Inspect System →</button>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="section-header">
+        <span class="section-tag">03 // TECH STACK</span>
+        <h2 class="section-title">Technical Capabilities</h2>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <div>
+            <div class="card-title">Languages & Frameworks</div>
+            <p class="card-desc">Python, C#, Java, C++, JavaScript, TypeScript, React, Angular, Node.js, Express.js, .NET</p>
+          </div>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">C# / .NET</span>
+            <span class="tag">React</span>
+            <span class="tag">Node.js</span>
+          </div>
         </div>
+
+        <div class="card">
+          <div>
+            <div class="card-title">Databases & CS Core</div>
+            <p class="card-desc">SQL, SQL Server, PostgreSQL, MongoDB, Algorithms & Data Structures, OS, Linux</p>
+          </div>
+          <div class="tags">
+            <span class="tag">SQL Server</span>
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">MongoDB</span>
+            <span class="tag">Linux</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div>
+            <div class="card-title">AI, Math & Dev Tools</div>
+            <p class="card-desc">LLM Apps, OpenAI API, Pandas, KNN, Regression, Git, Postman, Copilot, Claude Code, Cursor</p>
+          </div>
+          <div class="tags">
+            <span class="tag">LLMs & AI</span>
+            <span class="tag">Git</span>
+            <span class="tag">Cursor</span>
+            <span class="tag">Claude Code</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="section-header">
+        <span class="section-tag">04 // EDUCATION & TRAINING</span>
+        <h2 class="section-title">Academic & Technical Background</h2>
+      </div>
+
+      <div class="timeline-item">
+        <div>
+          <div class="card-title">AI Specialization</div>
+          <div class="card-subtitle">Ministry of Innovation, Science and Technology</div>
+        </div>
+        <span class="timeline-period">2026 – Present</span>
+      </div>
+
+      <div class="timeline-item">
+        <div>
+          <div class="card-title">Practical Software Engineering Diploma</div>
+          <div class="card-subtitle">MAHAT – Technological Training Institute</div>
+        </div>
+        <span class="timeline-period">2024 – 2026</span>
+      </div>
+
+      <div class="timeline-item">
+        <div>
+          <div class="card-title">Software Engineering & Artificial Intelligence Training</div>
+          <div class="card-subtitle">KamaTech</div>
+        </div>
+        <span class="timeline-period">2025 – 2026</span>
+      </div>
+
+      <div class="timeline-item">
+        <div>
+          <div class="card-title">High School – Computer Science & Programming Track</div>
+          <div class="card-subtitle">Computer Science & Software Foundations</div>
+        </div>
+        <span class="timeline-period">2022 – 2024</span>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="contact-box">
+        <span class="section-tag">05 // CONTACT</span>
+        <h2 class="section-title">Let's Build Something Impactful</h2>
+        <p>
+          Looking for Software Developer opportunities in Full-Stack, Backend, or AI engineering.
+          Reach out directly by email, LinkedIn, or GitHub.
+        </p>
+        <div class="cta-row" style="justify-content:center; margin-bottom:0;">
+          <a href="mailto:tandt5224@gmail.com" class="btn-primary">Email Tova</a>
+          <a href="https://www.linkedin.com/in/tova-oshinsky-229b8a35b/" target="_blank" rel="noopener noreferrer" class="btn-secondary">LinkedIn</a>
+          <a href="https://github.com/tova224" target="_blank" rel="noopener noreferrer" class="btn-secondary">GitHub</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      Tova Oshinsky • Software Developer (Full-Stack, Backend & AI) • Israel
     </div>
+  </footer>
 
-    <!-- TOAST NOTIFICATION -->
-    <div id="toast" class="fixed bottom-6 right-6 z-50 translate-y-20 opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-3 px-4 py-3 rounded-2xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 shadow-xl font-medium text-sm">
-        <i class="fa-solid fa-circle-check text-emerald-400 dark:text-emerald-600"></i>
-        <span id="toastMessage">Email copied to clipboard!</span>
+  <div class="modal-backdrop" id="projectModal" role="dialog" aria-modal="true">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="modalTitle" style="font-size:1.25rem; font-weight:800;"></h3>
+        <button type="button" class="modal-close" id="closeModal" aria-label="Close">✕</button>
+      </div>
+      <div id="modalSubtitle" class="card-subtitle" style="margin-bottom:10px;"></div>
+      <p id="modalDesc" style="color:var(--text-secondary);"></p>
+      <ul class="modal-list" id="modalHighlights"></ul>
+      <div class="tags" id="modalTags"></div>
     </div>
+  </div>
 
-    <!-- Hidden textarea fallback for reliable clipboard copy -->
-    <textarea id="clipboardHelper" class="sr-only" aria-hidden="true">tandt5224@gmail.com</textarea>
+  <div class="toast" id="toast">Email copied to clipboard: tandt5224@gmail.com</div>
 
-    <script>
-        // --- 1. PROJECT DATA ---
-        const projects = [
-            {
-                id: 1,
-                title: "End-to-End Recruitment Management System",
-                organization: "Ministry of Innovation, Science and Technology — Full Stack Developer",
-                categories: ["fullstack", "backend"],
-                badge: "Enterprise Full-Stack",
-                icon: "fa-solid fa-building-shield",
-                shortDesc: "Engineered an end-to-end recruitment platform implementing Layered Architecture, OOP/OOD principles, secure RESTful APIs, and SQL Server databases.",
-                fullDesc: "Designed and built a comprehensive enterprise recruitment management system from the ground up. Engineered clean separation of concerns across React/TypeScript frontend modules and Node.js/Express + .NET Core backend services.",
-                highlights: [
-                    "Implemented strict Layered Architecture and OOP/OOD principles for high maintainability.",
-                    "Architected relational SQL Server schemas with Stored Procedures, complex analytical queries, and Entity Framework.",
-                    "Collaborated in a professional Git workflow managing feature branches, PR reviews, and merge conflict resolution."
-                ],
-                tech: ["React", "TypeScript", "Node.js", "Express", ".NET Core", "SQL Server", "Entity Framework", "Stored Procedures", "Git"]
-            },
-            {
-                id: 2,
-                title: "ClinicFlow — Clinic Management System",
-                organization: "Full-Stack Architecture Project",
-                categories: ["fullstack", "backend"],
-                badge: "Full-Stack & Java",
-                icon: "fa-solid fa-heart-pulse",
-                shortDesc: "Full-stack clinic management platform featuring smart appointment scheduling, automated conflict validation, and multi-criteria search.",
-                fullDesc: "Built a modern healthcare scheduling and patient management solution powered by a Java Spring Boot backend and an interactive React frontend.",
-                highlights: [
-                    "Engineered automated time-slot conflict validation to prevent double-bookings across doctors and rooms.",
-                    "Developed advanced multi-criteria search endpoints and clean layered RESTful APIs.",
-                    "Integrated JPA and relational persistence with H2 Database for rapid, reliable data operations."
-                ],
-                tech: ["React", "Java Spring Boot", "JPA", "H2 Database", "RESTful APIs", "Layered Architecture"]
-            },
-            {
-                id: 3,
-                title: "Conversational AI Chatbot & Summarizer",
-                organization: "AI & LLM Engineering",
-                categories: ["ai", "backend"],
-                badge: "AI / LLM Pipeline",
-                icon: "fa-solid fa-robot",
-                shortDesc: "Python-based conversational AI assistant featuring persistent conversation history management, structured data handling, and automated summaries.",
-                fullDesc: "Developed an intelligent LLM-powered conversational agent utilizing Python and the OpenAI API to process complex user dialogues and synthesize actionable executive summaries.",
-                highlights: [
-                    "Managed multi-turn conversation context and persistent state history.",
-                    "Implemented structured data parsing and automated summary generation pipelines.",
-                    "Applied prompt engineering best practices for reliable, deterministic outputs."
-                ],
-                tech: ["Python", "OpenAI API", "LLMs", "Prompt Engineering", "Pandas"]
-            },
-            {
-                id: 4,
-                title: "Three-Tier Full-Stack Web Application",
-                organization: "Enterprise Web Systems",
-                categories: ["fullstack", "backend"],
-                badge: "3-Tier Architecture",
-                icon: "fa-solid fa-layer-group",
-                shortDesc: "Three-layer architecture web system with full CRUD operations, SQL Server Stored Procedures, and Angular + .NET RESTful communication.",
-                fullDesc: "Created a decoupled three-tier web application separating Data Access, Business Logic, and Presentation layers for scalable enterprise operations.",
-                highlights: [
-                    "Built full CRUD lifecycle endpoints in .NET communicating via REST with an Angular SPA.",
-                    "Optimized database performance using parameterized SQL Server Stored Procedures.",
-                    "Enforced clean DTO contracts and input validation across layers."
-                ],
-                tech: ["Angular", ".NET", "C#", "SQL Server", "Stored Procedures", "RESTful APIs"]
-            },
-            {
-                id: 5,
-                title: "Office Management System",
-                organization: "Desktop & Relational Systems",
-                categories: ["backend"],
-                badge: "OOP & SQL",
-                icon: "fa-solid fa-briefcase",
-                shortDesc: "Object-oriented office management software package in C# with full relational SQL database integration.",
-                fullDesc: "Designed and implemented a structured office workflow management system applying core Object-Oriented Programming principles and normalized relational tables.",
-                highlights: [
-                    "Applied encapsulation, inheritance, and polymorphism to model office entities cleanly.",
-                    "Integrated full relational SQL persistence with transactional data integrity."
-                ],
-                tech: ["C#", "SQL", "OOP / OOD", "Relational Databases"]
-            },
-            {
-                id: 6,
-                title: "Interactive Dynamic Web Platform",
-                organization: "Frontend Engineering",
-                categories: ["fullstack"],
-                badge: "Frontend UI",
-                icon: "fa-solid fa-wand-magic-sparkles",
-                shortDesc: "Responsive web interface engineered with semantic HTML5, modern CSS3, and dynamic client-side JavaScript interactivity.",
-                fullDesc: "Developed a fast, mobile-responsive web application emphasizing clean UI/UX design, smooth DOM manipulation, and accessible layouts.",
-                highlights: [
-                    "Crafted responsive layouts adapting seamlessly across mobile, tablet, and desktop screens.",
-                    "Implemented dynamic client-side state updates and interactive user feedback."
-                ],
-                tech: ["HTML5", "CSS3", "JavaScript", "Responsive Design"]
-            }
-        ];
+  <script>
+    const htmlEl = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const themeText = document.getElementById('themeText');
 
-        // --- 2. STYLE SKILL PILLS ON LOAD ---
-        document.querySelectorAll('.skill-pill').forEach(pill => {
-            pill.className = "px-3 py-1.5 rounded-xl text-xs font-mono font-medium bg-slate-100 dark:bg-slate-800/90 text-slate-700 dark:text-slate-200 border border-slate-200/80 dark:border-slate-700/80 hover:border-indigo-500/50 dark:hover:border-cyan-400/50 transition-colors";
+    function updateThemeUI() {
+      const isLight = htmlEl.classList.contains('light');
+      themeIcon.textContent = isLight ? '🌙' : '☀';
+      themeText.textContent = isLight ? 'Dark' : 'Light';
+    }
+
+    themeToggle.addEventListener('click', () => {
+      htmlEl.classList.toggle('light');
+      updateThemeUI();
+    });
+    updateThemeUI();
+
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+
+    const copyEmailBtn = document.getElementById('copyEmailBtn');
+    const toast = document.getElementById('toast');
+    copyEmailBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText('tandt5224@gmail.com');
+      } catch (e) {}
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2600);
+    });
+
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projectItems = document.querySelectorAll('.project-item');
+
+    filterBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        projectItems.forEach((item) => {
+          const cats = item.dataset.category.split(' ');
+          item.style.display = (filter === 'all' || cats.includes(filter)) ? 'flex' : 'none';
         });
+      });
+    });
 
-        // --- 3. RENDER PROJECT CARDS ---
-        const projectsGrid = document.getElementById('projectsGrid');
+    const projectsData = {
+      recruitment: {
+        title: 'Recruitment Management System',
+        subtitle: 'Full-Stack & Backend Architecture',
+        desc: 'Engineered an end-to-end recruitment management system utilizing React, TypeScript, Node.js, Express, and .NET Core.',
+        highlights: [
+          'Implemented Layered Architecture, OOP/OOD design principles, and secure RESTful APIs.',
+          'Managed SQL Server databases with Stored Procedures, complex queries, and Entity Framework.',
+          'Collaborated in a Git workflow handling branch management, PR reviews, and merge conflicts.'
+        ],
+        tags: ['React', 'TypeScript', 'Node.js', 'Express', '.NET Core', 'SQL Server', 'Entity Framework', 'Git']
+      },
+      clinicflow: {
+        title: 'ClinicFlow – Full Stack Clinic Management System',
+        subtitle: 'React • Java Spring Boot • JPA • H2 Database',
+        desc: 'Built a full-stack clinic management system designed for structured scheduling and multi-criteria queries.',
+        highlights: [
+          'Smart appointment scheduling with automated conflict validation.',
+          'Advanced search capabilities and layered RESTful APIs.',
+          'Relational persistence powered by Spring Boot and JPA.'
+        ],
+        tags: ['React', 'Java Spring Boot', 'JPA', 'H2 Database', 'RESTful APIs']
+      },
+      chatbot: {
+        title: 'AI Chatbot & Summarization Application',
+        subtitle: 'Python • OpenAI API • LLM Workflows',
+        desc: 'Developed a conversational AI chatbot with structured conversation state and summary generation.',
+        highlights: [
+          'Maintained multi-turn conversation history and context handling.',
+          'Structured data processing alongside automated summary generation.',
+          'Built with Python, OpenAI API, and data handling workflows.'
+        ],
+        tags: ['Python', 'OpenAI API', 'LLMs', 'Pandas']
+      },
+      threetier: {
+        title: 'Three-Tier Full-Stack Web Application',
+        subtitle: 'Angular • .NET • SQL Server',
+        desc: 'Created a three-layer architecture application separating presentation, business logic, and database layers.',
+        highlights: [
+          'Full CRUD operations backed by SQL Server Stored Procedures.',
+          'Clean RESTful communication between Angular frontend and .NET services.'
+        ],
+        tags: ['Angular', '.NET', 'SQL Server', 'Stored Procedures', 'RESTful APIs']
+      },
+      office: {
+        title: 'Office Management System',
+        subtitle: 'C# • SQL • Object-Oriented Programming',
+        desc: 'Designed an office management system applying object-oriented design and database integration.',
+        highlights: [
+          'Structured domain entities using OOP/OOD principles in C#.',
+          'Integrated persistent data operations with relational SQL storage.'
+        ],
+        tags: ['C#', 'SQL', 'OOP']
+      },
+      web: {
+        title: 'Interactive Web Application',
+        subtitle: 'HTML • CSS • JavaScript',
+        desc: 'Developed a responsive web interface with dynamic client-side behavior.',
+        highlights: [
+          'Responsive layout adaptable across screen sizes.',
+          'Interactive client-side logic in JavaScript.'
+        ],
+        tags: ['HTML', 'CSS', 'JavaScript']
+      }
+    };
 
-        function renderProjects(filter = 'all') {
-            projectsGrid.innerHTML = '';
-            const filtered = filter === 'all' 
-                ? projects 
-                : projects.filter(p => p.categories.includes(filter));
+    const modal = document.getElementById('projectModal');
+    const closeModal = document.getElementById('closeModal');
 
-            filtered.forEach(project => {
-                const card = document.createElement('article');
-                card.className = "group relative flex flex-col justify-between p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/85 dark:bg-cardDark/85 glass-card hover:border-indigo-500/60 dark:hover:border-cyan-400/60 shadow-sm hover:shadow-xl hover:shadow-indigo-500/10 transition-all duration-300 hover:-translate-y-1 cursor-pointer";
-                card.setAttribute('tabindex', '0');
-                card.setAttribute('role', 'button');
-                card.setAttribute('aria-label', `Open details for ${project.title}`);
+    window.openProjectModal = function (key) {
+      const data = projectsData[key];
+      if (!data) return;
+      document.getElementById('modalTitle').textContent = data.title;
+      document.getElementById('modalSubtitle').textContent = data.subtitle;
+      document.getElementById('modalDesc').textContent = data.desc;
 
-                const techHtml = project.tech.slice(0, 4).map(t => 
-                    `<span class="px-2.5 py-1 rounded-lg text-[11px] font-mono bg-slate-100 dark:bg-slate-800/90 text-slate-700 dark:text-slate-300 border border-slate-200/60 dark:border-slate-700/60">${t}</span>`
-                ).join('');
-                const extraCount = project.tech.length > 4 
-                    ? `<span class="px-2 py-1 rounded-lg text-[11px] font-mono text-indigo-600 dark:text-cyan-400">+${project.tech.length - 4}</span>` 
-                    : '';
+      const listEl = document.getElementById('modalHighlights');
+      listEl.innerHTML = '';
+      data.highlights.forEach((h) => {
+        const li = document.createElement('li');
+        li.textContent = h;
+        listEl.appendChild(li);
+      });
 
-                card.innerHTML = `
-                    <div>
-                        <div class="flex items-center justify-between gap-2 mb-4">
-                            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500/15 to-cyan-500/15 text-indigo-600 dark:text-cyan-400 flex items-center justify-center border border-indigo-500/20">
-                                <i class="${project.icon}"></i>
-                            </div>
-                            <span class="font-mono text-[11px] px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-medium">
-                                ${project.badge}
-                            </span>
-                        </div>
-                        <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-cyan-400 transition-colors mb-1.5">
-                            ${project.title}
-                        </h3>
-                        <p class="text-xs font-mono text-indigo-600/90 dark:text-indigo-400 mb-3">
-                            ${project.organization}
-                        </p>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-5">
-                            ${project.shortDesc}
-                        </p>
-                    </div>
-                    <div>
-                        <div class="flex flex-wrap gap-1.5 mb-4">
-                            ${techHtml}${extraCount}
-                        </div>
-                        <div class="pt-3 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-xs font-semibold text-indigo-600 dark:text-cyan-400">
-                            <span>Inspect Architecture</span>
-                            <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
-                        </div>
-                    </div>
-                `;
+      const tagsEl = document.getElementById('modalTags');
+      tagsEl.innerHTML = '';
+      data.tags.forEach((t) => {
+        const span = document.createElement('span');
+        span.className = 'tag';
+        span.textContent = t;
+        tagsEl.appendChild(span);
+      });
 
-                card.addEventListener('click', () => openProjectModal(project));
-                card.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        openProjectModal(project);
-                    }
-                });
+      modal.classList.add('open');
+    };
 
-                projectsGrid.appendChild(card);
-            });
-        }
-
-        // --- 4. FILTER BUTTONS LOGIC ---
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        filterButtons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterButtons.forEach(b => {
-                    b.classList.remove('active', 'bg-white', 'dark:bg-indigo-600', 'text-slate-900', 'dark:text-white', 'shadow-sm', 'font-semibold');
-                    b.classList.add('text-slate-600', 'dark:text-slate-400', 'font-medium');
-                });
-                btn.classList.add('active', 'bg-white', 'dark:bg-indigo-600', 'text-slate-900', 'dark:text-white', 'shadow-sm', 'font-semibold');
-                btn.classList.remove('text-slate-600', 'dark:text-slate-400', 'font-medium');
-                
-                renderProjects(btn.dataset.filter);
-            });
-        });
-
-        // --- 5. PROJECT DETAIL MODAL ---
-        const projectModal = document.getElementById('projectModal');
-        const closeModalBtn = document.getElementById('closeModalBtn');
-        const closeModalSecondaryBtn = document.getElementById('closeModalSecondaryBtn');
-
-        function openProjectModal(project) {
-            document.getElementById('modalBadge').textContent = project.badge;
-            document.getElementById('modalTitle').textContent = project.title;
-            document.getElementById('modalOrg').textContent = project.organization;
-            document.getElementById('modalDescription').textContent = project.fullDesc;
-
-            const highlightsEl = document.getElementById('modalHighlights');
-            highlightsEl.innerHTML = project.highlights.map(item => `
-                <li class="flex items-start gap-2.5">
-                    <i class="fa-solid fa-check text-emerald-500 mt-1 text-xs"></i>
-                    <span>${item}</span>
-                </li>
-            `).join('');
-
-            const tagsEl = document.getElementById('modalTags');
-            tagsEl.innerHTML = project.tech.map(t => `
-                <span class="px-3 py-1 rounded-xl text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700">${t}</span>
-            `).join('');
-
-            projectModal.classList.remove('hidden');
-            projectModal.classList.add('flex');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeProjectModal() {
-            projectModal.classList.add('hidden');
-            projectModal.classList.remove('flex');
-            document.body.style.overflow = '';
-        }
-
-        closeModalBtn.addEventListener('click', closeProjectModal);
-        closeModalSecondaryBtn.addEventListener('click', closeProjectModal);
-        projectModal.addEventListener('click', (e) => {
-            if (e.target === projectModal) closeProjectModal();
-        });
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && !projectModal.classList.contains('hidden')) {
-                closeProjectModal();
-            }
-        });
-
-        // --- 6. THEME TOGGLE (DARK / LIGHT) ---
-        const themeToggle = document.getElementById('themeToggle');
-        const themeIcon = document.getElementById('themeIcon');
-        const htmlEl = document.documentElement;
-
-        function updateThemeIcon() {
-            if (htmlEl.classList.contains('dark')) {
-                themeIcon.className = 'fa-solid fa-sun text-base';
-            } else {
-                themeIcon.className = 'fa-solid fa-moon text-base text-indigo-600';
-            }
-        }
-
-        themeToggle.addEventListener('click', () => {
-            htmlEl.classList.toggle('dark');
-            htmlEl.classList.toggle('light');
-            updateThemeIcon();
-        });
-
-        // --- 7. MOBILE MENU ---
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-        document.querySelectorAll('.mobile-link').forEach(link => {
-            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-        });
-
-        // --- 8. COPY EMAIL WITH TOAST ---
-        const toast = document.getElementById('toast');
-        const clipboardHelper = document.getElementById('clipboardHelper');
-        let toastTimeout;
-
-        function copyEmail() {
-            try {
-                clipboardHelper.classList.remove('sr-only');
-                clipboardHelper.select();
-                clipboardHelper.setSelectionRange(0, 99999);
-                document.execCommand('copy');
-                clipboardHelper.classList.add('sr-only');
-                showToast('Copied tandt5224@gmail.com to clipboard!');
-            } catch (err) {
-                showToast('Email: tandt5224@gmail.com');
-            }
-        }
-
-        function showToast(msg) {
-            document.getElementById('toastMessage').textContent = msg;
-            toast.classList.remove('translate-y-20', 'opacity-0');
-            clearTimeout(toastTimeout);
-            toastTimeout = setTimeout(() => {
-                toast.classList.add('translate-y-20', 'opacity-0');
-            }, 3000);
-        }
-
-        document.getElementById('copyEmailHeroBtn').addEventListener('click', copyEmail);
-        document.getElementById('copyEmailFooterBtn').addEventListener('click', copyEmail);
-
-        // --- 9. SCROLL REVEAL & INIT ---
-        window.onload = function () {
-            document.getElementById('currentYear').textContent = new Date().getFullYear();
-            renderProjects('all');
-            updateThemeIcon();
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-        };
-    </script>
+    closeModal.addEventListener('click', () => modal.classList.remove('open'));
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) modal.classList.remove('open');
+    });
+  </script>
 </body>
 </html>
