@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tova Oshinsky | Full-Stack, Backend & AI Software Developer</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%2338bdf8'/%3E%3Cstop offset='100%25' stop-color='%23818cf8'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Cpath d='M24 22L14 32L24 42M40 22L50 32L40 42M35 19L29 45' stroke='%23ffffff' stroke-width='4.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E" />
   <style>
     :root {
       --bg-primary: #090d16;
@@ -123,10 +124,16 @@
       box-shadow: 0 6px 18px var(--accent-glow);
     }
 
+    .brand-mark svg {
+      width: 20px;
+      height: 20px;
+      display: block;
+    }
+
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 24px;
+      gap: 22px;
       font-size: 0.92rem;
       color: var(--text-secondary);
     }
@@ -626,7 +633,13 @@
   <header>
     <div class="nav-inner">
       <a href="#" class="brand">
-        <span class="brand-mark">TO</span>
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="8 6 2 12 8 18"></polyline>
+            <polyline points="16 6 22 12 16 18"></polyline>
+            <line x1="14" y1="4" x2="10" y2="20"></line>
+          </svg>
+        </span>
         <span>Tova Oshinsky</span>
       </a>
 
@@ -635,6 +648,7 @@
         <a href="#projects">Projects</a>
         <a href="#skills">Tech Stack</a>
         <a href="#education">Education</a>
+        <a href="#cv">CV</a>
         <a href="#contact">Contact</a>
       </nav>
 
@@ -644,6 +658,9 @@
         </a>
         <a class="icon-btn" href="https://www.linkedin.com/in/tova-oshinsky-229b8a35b/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
           <span>LinkedIn</span>
+        </a>
+        <a class="icon-btn" href="#cv" aria-label="CV">
+          <span>CV</span>
         </a>
         <button class="icon-btn" id="themeToggle" type="button" aria-label="Toggle Theme" title="Toggle Light/Dark Theme">
           <span id="themeIcon">☀</span>
@@ -664,12 +681,14 @@
         <h1>Tova Oshinsky</h1>
         <div class="hero-role">Software Developer | Full-Stack, Backend & AI</div>
         <p class="hero-desc">
-          Building scalable web applications, layered backend architectures, and LLM-powered solutions.
-          Experienced across Python, C#, Java, TypeScript, React, Angular, Node.js, .NET Core, and SQL Server.
+          Software Developer with hands-on experience in AI, Backend, and Full-Stack development. Proficient in Python, C#, Java, JavaScript, React, .NET, SQL, RESTful APIs, databases, and LLM-based applications. Analytical, detail-oriented, and fast learner with strong problem-solving skills, adaptability to new technologies, and a passion for building scalable, high-quality software.
         </p>
 
         <div class="cta-row">
           <a href="#projects" class="btn-primary">Explore Projects ↓</a>
+          <a href="#cv" class="btn-secondary">View CV</a>
+          <a href="https://www.linkedin.com/in/tova-oshinsky-229b8a35b/" target="_blank" rel="noopener noreferrer" class="btn-secondary">LinkedIn</a>
+          <a href="https://github.com/tova224" target="_blank" rel="noopener noreferrer" class="btn-secondary">GitHub</a>
           <button type="button" class="btn-secondary" id="copyEmailBtn">
             <span>Copy Email</span>
             <span style="opacity:0.75;font-size:0.84rem;">tandt5224@gmail.com</span>
@@ -678,8 +697,8 @@
 
         <div class="meta-line">
           <span>📍 Israel</span>
+          <span>📞 058-328-5224</span>
           <span>🌐 English (Fluent) • Hebrew (Native)</span>
-          <span>⚙️ Clean Architecture & LLMs</span>
         </div>
       </div>
 
@@ -692,17 +711,15 @@
         </div>
         <pre class="code-block"><span class="code-key">const</span> developer = {
   <span class="code-key">name</span>: <span class="code-str">"Tova Oshinsky"</span>,
-  <span class="code-key">focus</span>: [
-    <span class="code-str">"Full-Stack Engineering"</span>,
-    <span class="code-str">"Backend & APIs"</span>,
-    <span class="code-str">"AI & LLM Applications"</span>
-  ],
+  <span class="code-key">location</span>: <span class="code-str">"Israel"</span>,
+  <span class="code-key">github</span>: <span class="code-str">"https://github.com/tova224"</span>,
+  <span class="code-key">linkedin</span>: <span class="code-str">"https://www.linkedin.com/in/tova-oshinsky-229b8a35b/"</span>,
+  <span class="code-key">cvSection</span>: <span class="code-str">"#cv"</span>,
   <span class="code-key">stack</span>: {
-    <span class="code-key">backend</span>: [<span class="code-str">".NET Core"</span>, <span class="code-str">"Node.js"</span>, <span class="code-str">"Spring Boot"</span>, <span class="code-str">"Python"</span>],
-    <span class="code-key">frontend</span>: [<span class="code-str">"React"</span>, <span class="code-str">"TypeScript"</span>, <span class="code-str">"Angular"</span>],
-    <span class="code-key">databases</span>: [<span class="code-str">"SQL Server"</span>, <span class="code-str">"PostgreSQL"</span>, <span class="code-str">"MongoDB"</span>]
-  },
-  <span class="code-key">ready</span>: <span class="code-fn">() =></span> <span class="code-str">"Building scalable software"</span>
+    <span class="code-key">backend</span>: [<span class="code-str">".NET"</span>, <span class="code-str">"Node.js"</span>, <span class="code-str">"Express.js"</span>, <span class="code-str">"Python"</span>],
+    <span class="code-key">frontend</span>: [<span class="code-str">"React"</span>, <span class="code-str">"Angular"</span>, <span class="code-str">"JavaScript"</span>],
+    <span class="code-key">databases</span>: [<span class="code-str">"SQL"</span>, <span class="code-str">"PostgreSQL"</span>, <span class="code-str">"MongoDB"</span>]
+  }
 };</pre>
       </div>
     </section>
@@ -710,7 +727,7 @@
     <section id="experience">
       <div class="section-header">
         <span class="section-tag">01 // EXPERIENCE</span>
-        <h2 class="section-title">Professional Experience</h2>
+        <h2 class="section-title">Experience</h2>
       </div>
 
       <div class="card">
@@ -720,12 +737,10 @@
               <div class="card-title">Full Stack Developer</div>
               <div class="card-subtitle">Ministry of Innovation, Science and Technology</div>
             </div>
-            <span class="tag">Full-Stack • Backend • SQL</span>
+            <span class="tag">Full-Stack • Backend • SQL Server</span>
           </div>
           <p class="card-desc">
-            Engineered an end-to-end recruitment management system using React, TypeScript, Node.js, Express, and .NET Core.
-            Implemented Layered Architecture, OOP/OOD principles, secure RESTful APIs, and SQL Server database workflows with
-            Stored Procedures, complex queries, and Entity Framework inside a collaborative Git workflow.
+            Engineered an end-to-end recruitment management system using React, TypeScript, Node.js, Express, and .NET Core. Implemented Layered Architecture, OOP/OOD principles, and secure RESTful APIs. Managed SQL Server databases utilizing Stored Procedures, complex queries, and Entity Framework. Collaborated in a Git environment handling branch management, PR reviews, and merge conflicts.
           </p>
           <div class="tags">
             <span class="tag">React</span>
@@ -745,7 +760,7 @@
     <section id="projects">
       <div class="section-header">
         <span class="section-tag">02 // PROJECTS</span>
-        <h2 class="section-title">Featured Software & AI Projects</h2>
+        <h2 class="section-title">Projects</h2>
       </div>
 
       <div class="filter-bar" id="filterBar">
@@ -760,38 +775,13 @@
           <div>
             <div class="card-top">
               <div>
-                <div class="card-title">Recruitment Management System</div>
-                <div class="card-subtitle">End-to-End Enterprise Platform</div>
+                <div class="card-title">ClinicFlow - Full Stack Clinic Management System</div>
+                <div class="card-subtitle">React, Java Spring Boot, JPA, H2 Database</div>
               </div>
               <span class="tag">Full-Stack</span>
             </div>
             <p class="card-desc">
-              Built a complete recruitment management platform with layered architecture, RESTful APIs, and SQL Server
-              Stored Procedures & Entity Framework integration.
-            </p>
-            <div class="tags">
-              <span class="tag">React</span>
-              <span class="tag">TypeScript</span>
-              <span class="tag">Node.js</span>
-              <span class="tag">.NET Core</span>
-              <span class="tag">SQL Server</span>
-            </div>
-          </div>
-          <button type="button" class="card-link-btn" onclick="openProjectModal('recruitment')">Inspect System →</button>
-        </article>
-
-        <article class="card project-item" data-category="fullstack backend">
-          <div>
-            <div class="card-top">
-              <div>
-                <div class="card-title">ClinicFlow – Clinic Management System</div>
-                <div class="card-subtitle">Smart Scheduling & REST Architecture</div>
-              </div>
-              <span class="tag">Spring Boot</span>
-            </div>
-            <p class="card-desc">
-              Developed a full-stack clinic management system featuring smart appointment scheduling, conflict validation,
-              advanced search, and layered RESTful APIs.
+              Built a full-stack clinic management system featuring smart appointment scheduling, conflict validation, advanced search, and layered architecture RESTful APIs.
             </p>
             <div class="tags">
               <span class="tag">React</span>
@@ -807,20 +797,17 @@
           <div>
             <div class="card-top">
               <div>
-                <div class="card-title">AI Chatbot & Summarization App</div>
-                <div class="card-subtitle">Conversational LLM Assistant</div>
+                <div class="card-title">AI Chatbot</div>
+                <div class="card-subtitle">Python, OpenAI API</div>
               </div>
               <span class="tag">AI / LLM</span>
             </div>
             <p class="card-desc">
-              Developed a conversational AI chatbot with conversation history management, structured data handling,
-              and automated summary generation.
+              Developed a conversational AI chatbot with conversation history management, structured data handling, and automated summary generation.
             </p>
             <div class="tags">
               <span class="tag">Python</span>
               <span class="tag">OpenAI API</span>
-              <span class="tag">LLMs</span>
-              <span class="tag">Pandas</span>
             </div>
           </div>
           <button type="button" class="card-link-btn" onclick="openProjectModal('chatbot')">Inspect System →</button>
@@ -830,20 +817,18 @@
           <div>
             <div class="card-top">
               <div>
-                <div class="card-title">Three-Tier Full-Stack Web App</div>
-                <div class="card-subtitle">Angular + .NET + SQL Server</div>
+                <div class="card-title">Full-Stack Web App</div>
+                <div class="card-subtitle">Angular, .NET, SQL Server</div>
               </div>
               <span class="tag">3-Tier</span>
             </div>
             <p class="card-desc">
-              Created a three-layer architecture web application with full CRUD operations, Stored Procedures,
-              and RESTful communication.
+              Created a three-layer architecture system with full CRUD operations, Stored Procedures, and RESTful communication.
             </p>
             <div class="tags">
               <span class="tag">Angular</span>
               <span class="tag">.NET</span>
               <span class="tag">SQL Server</span>
-              <span class="tag">REST APIs</span>
             </div>
           </div>
           <button type="button" class="card-link-btn" onclick="openProjectModal('threetier')">Inspect System →</button>
@@ -854,13 +839,12 @@
             <div class="card-top">
               <div>
                 <div class="card-title">Office Management System</div>
-                <div class="card-subtitle">Object-Oriented Architecture</div>
+                <div class="card-subtitle">C#, SQL, OOP</div>
               </div>
               <span class="tag">C# / OOP</span>
             </div>
             <p class="card-desc">
-              Designed an office management system implementing object-oriented programming principles and relational
-              database integration.
+              Designed an office management system implementing object-oriented programming principles and full database integration.
             </p>
             <div class="tags">
               <span class="tag">C#</span>
@@ -875,13 +859,13 @@
           <div>
             <div class="card-top">
               <div>
-                <div class="card-title">Interactive Web Application</div>
-                <div class="card-subtitle">Responsive Client-Side Engineering</div>
+                <div class="card-title">Interactive Website</div>
+                <div class="card-subtitle">HTML, CSS, JavaScript</div>
               </div>
               <span class="tag">Frontend</span>
             </div>
             <p class="card-desc">
-              Developed a responsive website interface with clean layout structure and dynamic client-side functionality.
+              Developed a responsive website interface with dynamic client-side functionality.
             </p>
             <div class="tags">
               <span class="tag">HTML</span>
@@ -891,36 +875,74 @@
           </div>
           <button type="button" class="card-link-btn" onclick="openProjectModal('web')">Inspect System →</button>
         </article>
+
+        <article class="card project-item" data-category="fullstack backend">
+          <div>
+            <div class="card-top">
+              <div>
+                <div class="card-title">Recruitment Management System</div>
+                <div class="card-subtitle">Ministry of Innovation, Science and Technology</div>
+              </div>
+              <span class="tag">Full-Stack</span>
+            </div>
+            <p class="card-desc">
+              Engineered an end-to-end recruitment management system using React, TypeScript, Node.js, Express, and .NET Core.
+            </p>
+            <div class="tags">
+              <span class="tag">React</span>
+              <span class="tag">TypeScript</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">.NET Core</span>
+              <span class="tag">SQL Server</span>
+            </div>
+          </div>
+          <button type="button" class="card-link-btn" onclick="openProjectModal('recruitment')">Inspect System →</button>
+        </article>
       </div>
     </section>
 
     <section id="skills">
       <div class="section-header">
-        <span class="section-tag">03 // TECH STACK</span>
-        <h2 class="section-title">Technical Capabilities</h2>
+        <span class="section-tag">03 // SKILLS</span>
+        <h2 class="section-title">Skills</h2>
       </div>
 
       <div class="grid-3">
         <div class="card">
           <div>
-            <div class="card-title">Languages & Frameworks</div>
-            <p class="card-desc">Python, C#, Java, C++, JavaScript, TypeScript, React, Angular, Node.js, Express.js, .NET</p>
+            <div class="card-title">Programming Languages</div>
+            <p class="card-desc">Python, C#, Java, C++, JavaScript</p>
           </div>
           <div class="tags">
             <span class="tag">Python</span>
-            <span class="tag">C# / .NET</span>
+            <span class="tag">C#</span>
+            <span class="tag">Java</span>
+            <span class="tag">C++</span>
+            <span class="tag">JavaScript</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div>
+            <div class="card-title">Frontend & Backend</div>
+            <p class="card-desc">Frontend: HTML, CSS, React, Angular | Backend: Node.js, Express.js, .NET</p>
+          </div>
+          <div class="tags">
             <span class="tag">React</span>
+            <span class="tag">Angular</span>
             <span class="tag">Node.js</span>
+            <span class="tag">Express.js</span>
+            <span class="tag">.NET</span>
           </div>
         </div>
 
         <div class="card">
           <div>
             <div class="card-title">Databases & CS Core</div>
-            <p class="card-desc">SQL, SQL Server, PostgreSQL, MongoDB, Algorithms & Data Structures, OS, Linux</p>
+            <p class="card-desc">Databases: SQL, PostgreSQL, MongoDB | Operating Systems: Strong understanding of operating system principles, basic Linux experience | Algorithms & Data Structures: Strong knowledge</p>
           </div>
           <div class="tags">
-            <span class="tag">SQL Server</span>
+            <span class="tag">SQL</span>
             <span class="tag">PostgreSQL</span>
             <span class="tag">MongoDB</span>
             <span class="tag">Linux</span>
@@ -929,14 +951,42 @@
 
         <div class="card">
           <div>
-            <div class="card-title">AI, Math & Dev Tools</div>
-            <p class="card-desc">LLM Apps, OpenAI API, Pandas, KNN, Regression, Git, Postman, Copilot, Claude Code, Cursor</p>
+            <div class="card-title">AI & LLM Development</div>
+            <p class="card-desc">Building AI apps using LLMs, Python, APIs, and ML basics (KNN, regression, Pandas)</p>
           </div>
           <div class="tags">
-            <span class="tag">LLMs & AI</span>
+            <span class="tag">LLMs</span>
+            <span class="tag">Python</span>
+            <span class="tag">KNN</span>
+            <span class="tag">Regression</span>
+            <span class="tag">Pandas</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div>
+            <div class="card-title">Mathematics</div>
+            <p class="card-desc">Linear Algebra, Calculus (Differential & Integral), Discrete Mathematics, Probability</p>
+          </div>
+          <div class="tags">
+            <span class="tag">Linear Algebra</span>
+            <span class="tag">Calculus</span>
+            <span class="tag">Discrete Math</span>
+            <span class="tag">Probability</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div>
+            <div class="card-title">DevOps, AI Tools & Languages</div>
+            <p class="card-desc">DevOps & Tools: Git, Linux, Postman | AI Development Tools: GitHub Copilot, Claude Code, Cursor | Languages: English (Fluent), Hebrew (Native)</p>
+          </div>
+          <div class="tags">
             <span class="tag">Git</span>
-            <span class="tag">Cursor</span>
+            <span class="tag">Postman</span>
+            <span class="tag">GitHub Copilot</span>
             <span class="tag">Claude Code</span>
+            <span class="tag">Cursor</span>
           </div>
         </div>
       </div>
@@ -944,24 +994,24 @@
 
     <section id="education">
       <div class="section-header">
-        <span class="section-tag">04 // EDUCATION & TRAINING</span>
-        <h2 class="section-title">Academic & Technical Background</h2>
+        <span class="section-tag">04 // EDUCATION</span>
+        <h2 class="section-title">Education</h2>
       </div>
 
       <div class="timeline-item">
         <div>
-          <div class="card-title">AI Specialization</div>
+          <div class="card-title">AI Practicum</div>
           <div class="card-subtitle">Ministry of Innovation, Science and Technology</div>
         </div>
-        <span class="timeline-period">2026 – Present</span>
+        <span class="timeline-period">2026-Present</span>
       </div>
 
       <div class="timeline-item">
         <div>
           <div class="card-title">Practical Software Engineering Diploma</div>
-          <div class="card-subtitle">MAHAT – Technological Training Institute</div>
+          <div class="card-subtitle">MAHAT- Technological Training Institute • GPA: 96</div>
         </div>
-        <span class="timeline-period">2024 – 2026</span>
+        <span class="timeline-period">2024-2026</span>
       </div>
 
       <div class="timeline-item">
@@ -969,30 +1019,90 @@
           <div class="card-title">Software Engineering & Artificial Intelligence Training</div>
           <div class="card-subtitle">KamaTech</div>
         </div>
-        <span class="timeline-period">2025 – 2026</span>
+        <span class="timeline-period">Training</span>
       </div>
 
       <div class="timeline-item">
         <div>
-          <div class="card-title">High School – Computer Science & Programming Track</div>
-          <div class="card-subtitle">Computer Science & Software Foundations</div>
+          <div class="card-title">High School</div>
+          <div class="card-subtitle">Computer Science & Programming Track</div>
         </div>
-        <span class="timeline-period">2022 – 2024</span>
+        <span class="timeline-period">2022-2024</span>
+      </div>
+    </section>
+
+    <section id="cv">
+      <div class="section-header">
+        <span class="section-tag">05 // CURRICULUM VITAE</span>
+        <h2 class="section-title">Resume / CV</h2>
+      </div>
+
+      <div class="card">
+        <div>
+          <div class="card-top">
+            <div>
+              <div class="card-title">Tova Oshinsky — CV</div>
+              <div class="card-subtitle">Israel • tandt5224@gmail.com • 058-328-5224</div>
+            </div>
+            <div class="cta-row" style="margin-bottom:0;">
+              <a href="https://www.linkedin.com/in/tova-oshinsky-229b8a35b/" target="_blank" rel="noopener noreferrer" class="btn-secondary">LinkedIn</a>
+              <a href="https://github.com/tova224" target="_blank" rel="noopener noreferrer" class="btn-secondary">GitHub</a>
+              <button type="button" class="btn-primary" id="downloadCvTxtBtn">Download CV (.txt)</button>
+            </div>
+          </div>
+
+          <pre class="code-block" id="cvTextContent" style="margin-top:14px;">Israel
+Tova Oshinsky
+tandt5224@gmail.com | 058-328-5224 | LinkedIn: https://www.linkedin.com/in/tova-oshinsky-229b8a35b/ | GitHub: https://github.com/tova224
+
+Summary
+Software Developer with hands-on experience in AI, Backend, and Full-Stack development. Proficient in Python, C#, Java, JavaScript, React, .NET, SQL, RESTful APIs, databases, and LLM-based applications. Analytical, detail-oriented, and fast learner with strong problem-solving skills, adaptability to new technologies, and a passion for building scalable, high-quality software.
+
+Projects & Experience
+Full Stack Developer | Ministry of Innovation, Science and Technology Engineered an end-to-end recruitment management system using React, TypeScript, Node.js, Express, and .NET Core. Implemented Layered Architecture, OOP/OOD principles, and secure RESTful APIs. Managed SQL Server databases utilizing Stored Procedures, complex queries, and Entity Framework. Collaborated in a Git environment handling branch management, PR reviews, and merge conflicts.
+ClinicFlow - Full Stack Clinic Management System (React, Java Spring Boot, JPA, H2 Database) Built a full-stack clinic management system featuring smart appointment scheduling, conflict validation, advanced search, and layered architecture RESTful APIs.
+AI Chatbot - (Python, OpenAI API) Developed a conversational AI chatbot with conversation history management, structured data handling, and automated summary generation.
+Full-Stack Web App -(Angular, .NET, SQL Server) Created a three-layer architecture system with full CRUD operations, Stored Procedures, and RESTful communication.
+Office Management System -(C#, SQL, OOP) Designed an office management system implementing object-oriented programming principles and full database integration.
+Interactive Website - (HTML, CSS, JavaScript) Developed a responsive website interface with dynamic client-side functionality.
+
+Education
+2026-Present AI Practicum | Ministry of Innovation, Science and Technology
+2024-2026 Practical Software Engineering Diploma | MAHAT- Technological Training Institute
+GPA: 96
+Software Engineering & Artificial Intelligence Training - KamaTech
+2022-2024 High School | Computer Science & Programming Track
+
+Skills
+Programming Languages: Python, C#, Java, C++, JavaScript.
+Frontend: HTML, CSS, React, Angular
+Backend: Node.js, Express.js, .NET.
+Databases: SQL, PostgreSQL, MongoDB.
+Operating Systems: Strong understanding of operating system principles, basic Linux experience.
+Algorithms & Data Structures: Strong knowledge.
+AI & LLM Development: Building AI apps using LLMs, Python, APIs, and ML basics (KNN, regression, Pandas).
+Mathematics: Linear Algebra, Calculus (Differential & Integral), Discrete Mathematics, Probability.
+DevOps & Tools: Git, Linux, Postman.
+AI Development Tools: GitHub Copilot, Claude Code, Cursor.
+
+Languages
+- English (Fluent) - Hebrew (Native)</pre>
+        </div>
       </div>
     </section>
 
     <section id="contact">
       <div class="contact-box">
-        <span class="section-tag">05 // CONTACT</span>
-        <h2 class="section-title">Let's Build Something Impactful</h2>
+        <span class="section-tag">06 // CONTACT</span>
+        <h2 class="section-title">Contact</h2>
         <p>
-          Looking for Software Developer opportunities in Full-Stack, Backend, or AI engineering.
-          Reach out directly by email, LinkedIn, or GitHub.
+          Israel • tandt5224@gmail.com • 058-328-5224
         </p>
         <div class="cta-row" style="justify-content:center; margin-bottom:0;">
           <a href="mailto:tandt5224@gmail.com" class="btn-primary">Email Tova</a>
           <a href="https://www.linkedin.com/in/tova-oshinsky-229b8a35b/" target="_blank" rel="noopener noreferrer" class="btn-secondary">LinkedIn</a>
           <a href="https://github.com/tova224" target="_blank" rel="noopener noreferrer" class="btn-secondary">GitHub</a>
+          <a href="#cv" class="btn-secondary">CV</a>
         </div>
       </div>
     </section>
@@ -1000,7 +1110,7 @@
 
   <footer>
     <div class="container">
-      Tova Oshinsky • Software Developer (Full-Stack, Backend & AI) • Israel
+      Tova Oshinsky • <a href="https://github.com/tova224" target="_blank" rel="noopener noreferrer">GitHub</a> • <a href="https://www.linkedin.com/in/tova-oshinsky-229b8a35b/" target="_blank" rel="noopener noreferrer">LinkedIn</a> • <a href="#cv">CV</a>
     </div>
   </footer>
 
@@ -1017,7 +1127,7 @@
     </div>
   </div>
 
-  <div class="toast" id="toast">Email copied to clipboard: tandt5224@gmail.com</div>
+  <div class="toast" id="toast">Copied to clipboard: tandt5224@gmail.com</div>
 
   <script>
     const htmlEl = document.documentElement;
@@ -1053,6 +1163,20 @@
       setTimeout(() => toast.classList.remove('show'), 2600);
     });
 
+    const downloadCvTxtBtn = document.getElementById('downloadCvTxtBtn');
+    const cvTextContent = document.getElementById('cvTextContent');
+    downloadCvTxtBtn.addEventListener('click', () => {
+      const blob = new Blob([cvTextContent.textContent], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'Tova_Oshinsky_CV.txt';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    });
+
     const filterBtns = document.querySelectorAll('.filter-btn');
     const projectItems = document.querySelectorAll('.project-item');
 
@@ -1070,65 +1194,63 @@
 
     const projectsData = {
       recruitment: {
-        title: 'Recruitment Management System',
-        subtitle: 'Full-Stack & Backend Architecture',
-        desc: 'Engineered an end-to-end recruitment management system utilizing React, TypeScript, Node.js, Express, and .NET Core.',
+        title: 'Full Stack Developer | Ministry of Innovation, Science and Technology',
+        subtitle: 'React, TypeScript, Node.js, Express, .NET Core, SQL Server',
+        desc: 'Engineered an end-to-end recruitment management system using React, TypeScript, Node.js, Express, and .NET Core.',
         highlights: [
-          'Implemented Layered Architecture, OOP/OOD design principles, and secure RESTful APIs.',
-          'Managed SQL Server databases with Stored Procedures, complex queries, and Entity Framework.',
-          'Collaborated in a Git workflow handling branch management, PR reviews, and merge conflicts.'
+          'Implemented Layered Architecture, OOP/OOD principles, and secure RESTful APIs.',
+          'Managed SQL Server databases utilizing Stored Procedures, complex queries, and Entity Framework.',
+          'Collaborated in a Git environment handling branch management, PR reviews, and merge conflicts.'
         ],
         tags: ['React', 'TypeScript', 'Node.js', 'Express', '.NET Core', 'SQL Server', 'Entity Framework', 'Git']
       },
       clinicflow: {
-        title: 'ClinicFlow – Full Stack Clinic Management System',
-        subtitle: 'React • Java Spring Boot • JPA • H2 Database',
-        desc: 'Built a full-stack clinic management system designed for structured scheduling and multi-criteria queries.',
+        title: 'ClinicFlow - Full Stack Clinic Management System',
+        subtitle: 'React, Java Spring Boot, JPA, H2 Database',
+        desc: 'Built a full-stack clinic management system featuring smart appointment scheduling, conflict validation, advanced search, and layered architecture RESTful APIs.',
         highlights: [
-          'Smart appointment scheduling with automated conflict validation.',
-          'Advanced search capabilities and layered RESTful APIs.',
-          'Relational persistence powered by Spring Boot and JPA.'
+          'Smart appointment scheduling and conflict validation.',
+          'Advanced search and layered architecture RESTful APIs.'
         ],
-        tags: ['React', 'Java Spring Boot', 'JPA', 'H2 Database', 'RESTful APIs']
+        tags: ['React', 'Java Spring Boot', 'JPA', 'H2 Database']
       },
       chatbot: {
-        title: 'AI Chatbot & Summarization Application',
-        subtitle: 'Python • OpenAI API • LLM Workflows',
-        desc: 'Developed a conversational AI chatbot with structured conversation state and summary generation.',
+        title: 'AI Chatbot',
+        subtitle: 'Python, OpenAI API',
+        desc: 'Developed a conversational AI chatbot with conversation history management, structured data handling, and automated summary generation.',
         highlights: [
-          'Maintained multi-turn conversation history and context handling.',
-          'Structured data processing alongside automated summary generation.',
-          'Built with Python, OpenAI API, and data handling workflows.'
+          'Conversation history management.',
+          'Structured data handling and automated summary generation.'
         ],
-        tags: ['Python', 'OpenAI API', 'LLMs', 'Pandas']
+        tags: ['Python', 'OpenAI API']
       },
       threetier: {
-        title: 'Three-Tier Full-Stack Web Application',
-        subtitle: 'Angular • .NET • SQL Server',
-        desc: 'Created a three-layer architecture application separating presentation, business logic, and database layers.',
+        title: 'Full-Stack Web App',
+        subtitle: 'Angular, .NET, SQL Server',
+        desc: 'Created a three-layer architecture system with full CRUD operations, Stored Procedures, and RESTful communication.',
         highlights: [
-          'Full CRUD operations backed by SQL Server Stored Procedures.',
-          'Clean RESTful communication between Angular frontend and .NET services.'
+          'Three-layer architecture system with full CRUD operations.',
+          'Stored Procedures and RESTful communication.'
         ],
-        tags: ['Angular', '.NET', 'SQL Server', 'Stored Procedures', 'RESTful APIs']
+        tags: ['Angular', '.NET', 'SQL Server']
       },
       office: {
         title: 'Office Management System',
-        subtitle: 'C# • SQL • Object-Oriented Programming',
-        desc: 'Designed an office management system applying object-oriented design and database integration.',
+        subtitle: 'C#, SQL, OOP',
+        desc: 'Designed an office management system implementing object-oriented programming principles and full database integration.',
         highlights: [
-          'Structured domain entities using OOP/OOD principles in C#.',
-          'Integrated persistent data operations with relational SQL storage.'
+          'Object-oriented programming principles in C#.',
+          'Full SQL database integration.'
         ],
         tags: ['C#', 'SQL', 'OOP']
       },
       web: {
-        title: 'Interactive Web Application',
-        subtitle: 'HTML • CSS • JavaScript',
-        desc: 'Developed a responsive web interface with dynamic client-side behavior.',
+        title: 'Interactive Website',
+        subtitle: 'HTML, CSS, JavaScript',
+        desc: 'Developed a responsive website interface with dynamic client-side functionality.',
         highlights: [
-          'Responsive layout adaptable across screen sizes.',
-          'Interactive client-side logic in JavaScript.'
+          'Responsive website interface.',
+          'Dynamic client-side functionality.'
         ],
         tags: ['HTML', 'CSS', 'JavaScript']
       }
